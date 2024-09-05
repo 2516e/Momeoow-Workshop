@@ -231,3 +231,24 @@ nav {
   width: 300px;
   border-radius: 10px;
 }
+
+
+/************************************CONTACT US*************************************/
+
+#inpu{
+  width: 450px;
+  height: 400px;
+
+}
+
+.contact{
+  margin-left: 400px;
+
+
+}
+
+#btn{
+  position: absolute;
+  left: 960px;
+  bottom:50px;
+}
