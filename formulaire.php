@@ -28,13 +28,43 @@
         }
 
         if(empty($error)){
-            $request = $pdo->prepare("INSERT INTO produits (titre, description, categorie, prix, image) VALUES (?,?,?,?,?)");
-
-            try{
-                $request->execute([$_POST['titre'], $_POST['description'], $_POST['categorie'], $_POST['prix'], $_FILES['image']['name']]);
-            } catch(PDOException $e){
-                echo $e->getMessage();
-            }
+            if (empty($errors)) {
+                    $fileTmpPath = $_FILES['image']['tmp_name'];
+                    $fileName = $_FILES['image']['name'];
+                    $fileSize = $_FILES['image']['size'];
+                    $fileType = $_FILES['image']['type'];
+                    $fileNameCmps = explode(".", $fileName);
+                    $fileExtension = strtolower(end($fileNameCmps));
+        
+                    // Vérification du type MIME
+                    $allowedfileExtensions = ['jpg', 'gif', 'png', 'webp'];
+                    if (in_array($fileExtension, $allowedfileExtensions)) {
+                        // Créez un nouveau nom de fichier pour éviter les conflits de nom
+                        // md5 est une fonction pour hasher le nom de l'image (sécurité)
+                        $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+        
+                        $uploadFileDir = './public/assets/img/produits/';
+                        $dest_path = $uploadFileDir . $newFileName;
+        
+                        // Déplacer le fichier dans le répertoire cible
+                        if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                            $request = $pdo->prepare("INSERT INTO produits (titre, description, categorie, prix, image) VALUES (?,?,?,?,?)");;
+                            try {
+                                $request->execute([$_POST['titre'], $_POST['description'], $_POST['categorie'], $_POST['prix'], $newFileName]);
+                                $pdo = null;
+                                $request = null;
+                            } catch (PDOException $e) {
+                                echo $e->getMessage();
+                            }
+                        } else {
+                            echo 'Il y a eu une erreur lors du déplacement du fichier téléchargé.';
+                        }
+                    } else {
+                        echo 'Téléchargement échoué. Seuls les types de fichiers suivants sont autorisés : ' . implode(', ', $allowedfileExtensions);
+                    }
+                } else {
+                    echo 'Erreur lors du téléchargement du fichier. Code d\'erreur : ' . $_FILES['image']['error'];
+                }
 
             $success .= '<p style="color : green"> Merci, le produit a bien été enregistré !</p>';
         } 
