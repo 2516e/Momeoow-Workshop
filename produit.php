@@ -1,19 +1,26 @@
 <?php include './public/header.html.php' ?>
 
 <main>
-    <section id="produit">
-        <div class="textdesc">
-            <h2><?= isset($_GET['titre']) ? htmlspecialchars($_GET['titre']) : '' ?></h2>
-
-            <p>
-                <?= isset($_GET['description']) ? htmlspecialchars($_GET['description']) : '' ?>
-            </p>
-
-            <div class="avis">
-                
+        <div>
+        <?php if($tab){
+             foreach ($tab as $t) { ?>
+            <div>
+                <h2>Produit numéro : <?= $t['id'] ?></h2>
+                <div style="width: 200px;">
+                    <img src="img/<?= $t['image'] ?>" alt="<?= $t['produit'] ?>" style="width: 100%">
+                </div>
+                <h2><?= $t['produit']; ?></h2>
+                <p><?= $t['prix']; ?>€</p>
+                <p>categorie : <?= $t['categorie'] ?></p>
+                <a href="traitement_details.php?id=<?= $t['id']; ?>">Voir en détails</a>
             </div>
 
-            <h3><?= isset($_GET['prix']) ? htmlspecialchars($_GET['prix']) : '' ?></h3>
-        </div>
-    </section>
+        <?php }} else { ?>
+            <h2>Aucun produit n'a encore été ajouté </h2>
+        <?php } ?>
+    </div>
 </main>
+
+
+
+<?php
