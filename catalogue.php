@@ -17,21 +17,21 @@
 <main>
     <section class="wrapper">
         <?php if($tab){
-                    foreach ($tab as $t) { ?>
+                foreach ($tab as $t) { ?>
                 <div class="produit">
                     <div class="imgp">
                         <img src="public/assets/img/produits/<?=$t['image'] ?>" alt="<?= $t['titre'] ?>" style="width: 100%">
                     </div>
+                    
                     <div class="details">
-                        <h2><?= $t['titre']; ?></h2>
+                        <h4><?= $t['titre']; ?></h4>
                         <p class="categorie"><?= ucfirst($t['categorie']) ?></p>
-                        <h3 style="color: white;"><?= $t['prix']; ?>€</h3>
+                        <p style="color: white; font-size:x-large"><b><?= $t['prix']; ?>€</b></p>
                         <div class="btn">
                             <a href="traitement_details.php?id=<?= $t['id']; ?>">MORE <i class="fa-solid fa-paw"></i></a>
                         </div>
                     </div>
                 </div>
-
         <?php }} else { ?>
             <h2>Aucun produit n'a encore été ajouté ...</h2>
         <?php } ?>
