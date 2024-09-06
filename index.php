@@ -32,25 +32,28 @@
 
         </div>
         <div class="chevronDown">
-            <i class="fa-solid fa-chevron-down fa-2xl"></i>
+            <a href="#about_us">
+                <i class="fa-solid fa-chevron-down fa-2xl"></i>
+            </a>
         </div>
 
+        <section id="about_us">
+            <div class="about_us">
+                <div class="imgAboutUs">
+                    <img src="./public/assets/img/image.png" alt="">
+                </div>
+                <div class="textAboutUs">
+                    <h2>ABOUT US</h2>
+                    <p>
+                        Welcome to Purrfectly Yours, your one-stop shop for premium cat products! We are passionate about providing the best for your feline friends, offering a curated selection of high-quality cat toys, accessories, and care essentials. Our mission is to keep your cats happy, healthy, and entertained with products that both you and your pet will love. From cozy beds to interactive toys, we’re dedicated to bringing joy to your home, one purr at a time.
+                    </p>
+                </div>
+            </div>
+            
+        </section>
     </main>
-
-    <section id="about_us">
-        <div class="about_us">
-            <div class="imgAboutUs">
-                <img src="./public/assets/img/image.png" alt="">
-            </div>
-            <div class="textAboutUs">
-                <h2>ABOUT US</h2>
-                <p>
-                    Welcome to Purrfectly Yours, your one-stop shop for premium cat products! We are passionate about providing the best for your feline friends, offering a curated selection of high-quality cat toys, accessories, and care essentials. Our mission is to keep your cats happy, healthy, and entertained with products that both you and your pet will love. From cozy beds to interactive toys, we’re dedicated to bringing joy to your home, one purr at a time.
-                </p>
-            </div>
-        </div>
-        
-    </section>
 </body>
+
+<?php include './public/footer.html.php' ?>
 
 </html>

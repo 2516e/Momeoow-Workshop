@@ -28,7 +28,7 @@
                         <p class="categorie"><?= ucfirst($t['categorie']) ?></p>
                         <p style="color: white; font-size:x-large"><b><?= $t['prix']; ?>€</b></p>
                         <div class="btn">
-                            <a href="traitement_details.php?id=<?= $t['id']; ?>">MORE <i class="fa-solid fa-paw"></i></a>
+                            <a href="page_produit.php?id=<?= $t['id']; ?>&titre=<?= $t['titre']?>&categorie=<?= $t['categorie'] ?>&description=<?= $t['description'] ?>&prix=<?= $t['prix'] ?>&image=<?= $t['image'] ?>"> MORE <i class="fa-solid fa-paw"></i></a>
                         </div>
                     </div>
                 </div>
@@ -36,4 +36,6 @@
             <h2>Aucun produit n'a encore été ajouté ...</h2>
         <?php } ?>
     </section>
+
+    <?php include 'public/footer.html.php' ?>
 </main>
